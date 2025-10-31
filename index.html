@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-orange-100 to-orange-400">
+
+  <div class="bg-white/30 p-5 rounded-2xl shadow-lg flex gap-3 calculator">
+    
+    <div class="flex flex-col items-center">
+      <h2 class="text-black font-bold mb-2">Calculator</h2>
+        <button onclick="window.location.href='history.html'" class="text-black bg-white p-3 rounded-lg">History</button>
+      <input id="display" readonly value="0" class="w-64 text-right bg-white text-lg p-3 rounded-lg mb-4 focus:outline-none font-mono" />
+
+      <div class="grid grid-cols-5 gap-2 w-64">
+        <button class="btn-sci">^</button>
+        <button class="btn col-span-2">C</button>
+        <button class="btn">%</button>
+        <button class="btn-op">÷</button>
+
+        <button class="btn-sci">√</button>
+        <button class="btn">7</button>
+        <button class="btn">8</button>
+        <button class="btn">9</button>
+        <button class="btn-op">*</button>
+
+        <button class="btn-sci">!</button>
+        <button class="btn">4</button>
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+        <button class="btn-op">-</button>
+
+        <button class="btn-sci">π</button>
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="btn-op">+</button>
+
+        <button class="btn-sci">e</button>
+        <button class="btn col-span-2">0</button>
+        <button class="btn">.</button>
+        <button class="btn-eq">=</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
