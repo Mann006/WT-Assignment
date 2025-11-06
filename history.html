@@ -1,8 +1,51 @@
-<html>
-    <head>
-        <title> History </title>
-    </head>
-    <body>
-       <p> <b> This function is in developement </b> </p>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculation History</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-orange-100 to-orange-400 flex flex-col items-center justify-center p-5">
+
+  <div class="bg-white/40 backdrop-blur-md p-6 rounded-2xl shadow-md w-full max-w-md">
+    <h2 class="text-center text-2xl font-bold mb-4 text-gray-800">Calculation History</h2>
+
+    <ul id="historyList" class="text-gray-700 space-y-2 max-h-80 overflow-y-auto border p-3 rounded-lg bg-white/60"></ul>
+
+    <div class="flex justify-between mt-4">
+      <button id="clearBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Clear History</button>
+      <a href="index.html" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Back</a>
+    </div>
+  </div>
+
+  <script>
+    const historyList = document.getElementById("historyList");
+    const clearBtn = document.getElementById("clearBtn");
+
+    function loadHistory() {
+      const history = JSON.parse(localStorage.getItem("calcHistory")) || [];
+      historyList.innerHTML = "";
+
+      if (history.length === 0) {
+        //When there is no history
+        historyList.innerHTML = "<li class='text-center text-gray-500'>No history yet.</li>";
+        return;
+      }
+      //To print each history this forEach loop is run.
+      history.forEach((item, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${i + 1}.</strong> ${item.expr} = <span class='text-green-700 font-semibold'>${item.result}</span>`;
+        historyList.appendChild(li);
+      });
+    }
+    //For clear button
+    clearBtn.addEventListener("click", () => {
+      localStorage.removeItem("calcHistory");
+      loadHistory();
+    });
+
+    loadHistory();
+  </script>
+</body>
 </html>
